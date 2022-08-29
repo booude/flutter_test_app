@@ -14,6 +14,7 @@ class FormScreenState extends State<FormScreen> {
   var passwordCache = '';
   var passwordCacheConfirm = '';
   bool obscureTextPassword = true;
+  bool checkBox = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class FormScreenState extends State<FormScreen> {
       ),
       body: Form(
         key: formKey,
-        child: Padding(
+        child: SingleChildScrollView(
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
@@ -122,6 +123,19 @@ class FormScreenState extends State<FormScreen> {
                     return 'Password is not equal';
                   }
                 },
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    value: checkBox,
+                    onChanged: (v) {
+                      setState(() {
+                        checkBox = v!;
+                      });
+                    },
+                  ),
+                  Text('Accept Terms and Services')
+                ],
               ),
               SizedBox(height: 40),
               SizedBox(
